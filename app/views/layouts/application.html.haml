@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title Genehmigt
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
+    = csrf_meta_tags
+    %meta{"http-equiv"=>"Content-Type", "content"=>"text/html; charset=utf-8"}
+  %body
+    .container
+      .pull-right
+        = link_to "Sign In", new_user_session_path
+        |
+        = link_to "Sign Up", new_user_registration_path
+      = yield
