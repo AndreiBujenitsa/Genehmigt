@@ -1,12 +1,82 @@
-%form.form-horizontal
+%form.form-horizontal#create_form{:method=>'POST'}
   %fieldset
-    %legend Create a new process
+    %legend= t(:'create_process.page_title')
     .control-group
-      %label{:for=>"input01", :class=>"control-label"} Title
+      %label.control-label{:for=>"input01"}= t(:'create_process.title_title')
       .controls
-        %input{:type=>"text", :id=>"input01", :class=>"input-xlarge"}
+        %input.input-xlarge#input01{:type=>"text"}
     .control-group
-      %label{:for=>"textarea01", :class=>"control-label"} Description
+      %label.control-label{:for=>"textarea01"}= t(:'create_process.description_title')
       .controls
-        %textarea{:rows=>3, :id=>"textarea", :class=>"input-xlarge"}
-        
+        %textarea.input-xlarge#textarea{:rows=>3}
+    .control-group
+      %label.control-label{:for=>"recipients"}= t(:'create_process.recipients_title')
+      .controls
+        .recipients
+          :javascript
+              $(document).ready(function(){
+
+                var id_counter = 0;
+
+                function insertRow(email, role_id, role_title){
+                  var uniq = true;
+                  var items = $('input[role="email"]');
+                  items.each(function(i,element){
+                    if($(element).val() == email){
+                      uniq = false;
+                      alert('This e-mail is already in the recipients list.');
+                    }
+                  })
+                  
+                  if(uniq){
+                    $('#recipients > tbody:last').append(
+                      '<tr id="recipient_row' + id_counter + '"><td><a id="remove_recipient_row' + id_counter + '"><i class="icon-trash"></i></a></td><td>' + email + '<input type="hidden" role="email" name="recipients[rec_' + id_counter + '][email]" value="' + email + '"></td><td>' + role_title + '<input type="hidden" name="recipients[rec_' + id_counter + '][role]" value="' + role_id + '"></td></tr>'
+                    );
+
+                    var remove_id_string = '#recipient_row' + id_counter;
+ 
+                    $('#remove_recipient_row' + id_counter).click(function(){
+                      $(remove_id_string).remove();
+                    });
+
+                    $('#email').val('');
+                    id_counter++;
+                  }
+                  $('#role').val(0);
+                  $('#role').attr('disabled', '');
+                }
+
+                $('#submit_btn').click(function(){
+                  $('#create_form').submit();
+                });
+                
+                $('#role').attr('disabled', '');
+
+                $('#email').bind('keyup change', function(){
+                  var email_string = $('#email').val();
+                  if(email_string.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i)){
+                    $('#role').removeAttr('disabled');
+                  } else {
+                    $('#role').attr('disabled', '');
+                  }
+                })
+
+                $('#role').change(function(){
+                  insertRow($('#email').val(), $('#role').val(), $('#role option:selected').text());
+                })
+
+              })
+          %table.table.table-striped#recipients
+            %tbody
+            %tfoot
+              %tr
+                %td{:style=>'width: 15px; border: none'}
+                %td{:style=>'border: none'}
+                  %input#email
+                %td{:style=>'border: none'}
+                  %select#role
+                    %option{:value=>'0'}= t(:'create_process.choose_role')
+                    - @roles.each do |role|
+                      %option{ :value => role[:id] }= role[:role]
+    .submit_button_wrap{:style=>'text-align: right;'}
+      %button.btn#submit_btn= t(:'create_process.submit_button')

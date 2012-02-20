@@ -2,4 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  create_process:
+    page_title: 'Create a new process'
+    submit_button: 'Create'
+    choose_role: 'choose role'
+    recipients_title: 'Recipients'
+    description_title: 'Description'
+    title_title: 'Title'
