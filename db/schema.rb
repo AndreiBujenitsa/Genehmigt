@@ -11,7 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219123452) do
+ActiveRecord::Schema.define(:version => 20120220132046) do
+
+  create_table "process_attachments", :force => true do |t|
+    t.integer  "process_id"
+    t.string   "attachment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "process_members", :force => true do |t|
+    t.string   "email"
+    t.integer  "role_id"
+    t.integer  "process_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_processes", :force => true do |t|
+    t.string   "title"
+    t.text     "message"
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "owner"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
