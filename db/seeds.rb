@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+r = Role.create(:role => 'need_to_approve')
+r = Role.create(:role => 'need_to_be_informed')

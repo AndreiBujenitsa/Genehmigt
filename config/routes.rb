@@ -3,7 +3,7 @@ Genehmigt::Application.routes.draw do
   scope "(:locale)", :locale => /en|de/ do
     devise_for :users
     root :to => "process#new"
-    resources :user_processes
+    resources :user_processes, :controller=>:process
   end
 
   # The priority is based upon order of creation:

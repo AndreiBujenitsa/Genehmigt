@@ -9,12 +9,10 @@ en:
     recipients_title: 'Recipients'
     description_title: 'Description'
     title_title: 'Title'
-    
-    
+       
   activerecord:
     models:
-      user: User
-      user_process: Process
     attributes:
-      UserProcess:
-        title: Totle
+      user_process:
+        title: Title
+        message: Message
