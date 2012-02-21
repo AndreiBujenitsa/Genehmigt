@@ -1,15 +1,20 @@
 class ProcessController < ApplicationController
+  before_filter :get_roles
+  
   def new
-    @roles = Role.all
     @process = UserProcess.new
     respond_with(@process)
   end
   
   def create
-    unless params[:recipients].blank?
-      @process = UserProcess.new(params[:user_process])
-      @process.add_members(params[:recipients]) if @process.save
-    end
-    #raise params.inspect
+    @process = UserProcess.new(params[:user_process])
+    @process.save
+    
+    respond_with(@process)
+  end
+  
+  protected
+  def get_roles
+    @roles = Role.all
   end
 end
