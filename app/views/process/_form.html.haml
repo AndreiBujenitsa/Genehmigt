@@ -2,10 +2,14 @@
   %fieldset
     %legend= t(:'create_process.page_title')
     = form_errors(@process)
-    .control-group
-      =f.label :owner, :class=>"control-label"
-      .controls
-        = f.text_field :owner, :class=>"input-xxlarge", :type=>"email"
+    - unless current_user
+      .control-group
+        =f.label :owner, :class=>"control-label"
+        .controls
+          = f.text_field :owner, :class=>"input-xxlarge", :type=>"email"
+    -else
+      =f.hidden_field :owner, :value=>current_user.email
+      =f.hidden_field :user_id, :value=>current_user.id
     .control-group
       =f.label :title, :class=>"control-label"
       .controls
@@ -69,7 +73,6 @@
                 $('#role').change(function(){
                   insertRow($('#email').val(), $('#role').val(), $('#role option:selected').text());
                 })
-
               })
           %table.table.table-striped#recipients
             %tbody

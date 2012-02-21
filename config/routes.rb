@@ -2,8 +2,13 @@ Genehmigt::Application.routes.draw do
 
   scope "(:locale)", :locale => /en|de/ do
     devise_for :users
+    devise_scope :user do
+      get "users"  => "devise/registrations#new" 
+    end
+    
     root :to => "process#new"
     resources :user_processes, :controller=>:process
+    get 'process/:id'=> "user_processes#show", :as=>"token_url"
   end
 
   # The priority is based upon order of creation:

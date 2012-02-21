@@ -8,10 +8,12 @@ class ProcessController < ApplicationController
   
   def create
     @process = UserProcess.new(params[:user_process])
-    @process.save
-    
-    respond_with(@process)
+    if @process.save
+      token_str = Crypto.encrypt("#{@process.owner}:#{2}:#{@process.id}")
+    end
   end
+  
+  
   
   protected
   def get_roles

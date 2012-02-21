@@ -7,10 +7,16 @@ class UserProcess < ActiveRecord::Base
   after_create :add_members
   
   def add_members
-    hash = recipients
-    hash.each_value do |val|
+    uniq = true
+    recipients.each_value do |val|
       member = ProcessMembers.new({:role_id=>val["role"], :email=>val["email"], :process_id=>id })
+      member.save
+      uniq = false if val["email"] == owner
+    end
+    unless uniq.blank? 
+      member = ProcessMembers.new({:role_id=>2, :email=>owner, :process_id=>id })
       member.save
     end
   end
+  
 end
