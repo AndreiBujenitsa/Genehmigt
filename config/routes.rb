@@ -1,7 +1,10 @@
 Genehmigt::Application.routes.draw do
-  devise_for :users
-  root :to => "process#new"
-  resources :user_processes
+
+  scope "(:locale)", :locale => /en|de/ do
+    devise_for :users
+    root :to => "process#new"
+    resources :user_processes
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
