@@ -1,12 +1,15 @@
-%form.form-horizontal
+= form_for @process, :html => {:class => "form-horizontal"} do |f|
+  = form_errors(@process)
   %fieldset
     %legend Create a new process
     .control-group
-      %label{:for=>"input01", :class=>"control-label"} Title
+      =f.label :title, :class=>"control-label"
       .controls
-        %input{:type=>"text", :id=>"input01", :class=>"input-xlarge"}
+        = f.text_field :title, :class=>"input-xlarge"
     .control-group
-      %label{:for=>"textarea01", :class=>"control-label"} Description
+      =f.label :message, :class=>"control-label"
       .controls
-        %textarea{:rows=>3, :id=>"textarea", :class=>"input-xlarge"}
+        = f.text_area :message, :rows=>10, :class=>"input-xlarge"
+    .form-actions
+      %button{:type=>"submit", :class=>"btn btn-primary"} Create Process
         
