@@ -4,7 +4,7 @@
 en:
   create_process:
     page_title: 'Create a new process'
-    submit_button: 'Create'
+    submit_button: 'Create Process'
     choose_role: 'choose role'
     recipients_title: 'Recipients'
     description_title: 'Description'
