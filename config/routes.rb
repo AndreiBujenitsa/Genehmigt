@@ -1,7 +1,7 @@
 Genehmigt::Application.routes.draw do
   devise_for :users
   root :to => "process#new"
-  resources :processes
+  resources :user_processes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,14 +1,15 @@
-%form.form-horizontal#create_form{:method=>'POST'}
+= form_for @process, :html => {:class => "form-horizontal"} do |f|
+  = form_errors(@process)
   %fieldset
     %legend= t(:'create_process.page_title')
     .control-group
-      %label.control-label{:for=>"input01"}= t(:'create_process.title_title')
+      =f.label :title, :class=>"control-label"
       .controls
-        %input.input-xlarge#input01{:type=>"text"}
+        = f.text_field :title, :class=>"input-xlarge"
     .control-group
-      %label.control-label{:for=>"textarea01"}= t(:'create_process.description_title')
+      =f.label :message, :class=>"control-label"
       .controls
-        %textarea.input-xlarge#textarea{:rows=>3}
+        = f.text_area :message, :rows=>10, :class=>"input-xlarge"
     .control-group
       %label.control-label{:for=>"recipients"}= t(:'create_process.recipients_title')
       .controls
@@ -78,5 +79,7 @@
                     %option{:value=>'0'}= t(:'create_process.choose_role')
                     - @roles.each do |role|
                       %option{ :value => role[:id] }= role[:role]
-    .submit_button_wrap{:style=>'text-align: right;'}
-      %button.btn#submit_btn= t(:'create_process.submit_button')
+    .form-actions
+      %button{:type=>"submit", :class=>"btn btn-primary"} Create Process
+        
+
