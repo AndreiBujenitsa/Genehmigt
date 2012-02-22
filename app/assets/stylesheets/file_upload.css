@@ -22,3 +22,26 @@
     right: 0;
     top: 0;
 }
+
+.file_line {
+    padding: 5px 20px 5px 20px;
+    margin: 0;
+}
+
+#notDropZone {
+    z-index: 1000;
+    position: absolute;
+    font-size: 250%;
+    color: #ebebeb;
+    padding: 20px 155px 20px 155px;
+}
+
+#dropZone {
+    z-index: 1010;
+    position: absolute;
+}
+#zoneContainer {
+    min-height: 100px;
+    background-color: #F9F9F9;
+    position: relative;
+}
