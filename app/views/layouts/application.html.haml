@@ -10,14 +10,19 @@
     .container
       - unless flash[:error].nil?
         %span{:class=>"label label-important"}= flash[:error]
+        
+    %div{:class=>"navbar navbar-fixed-top"}
+      .navbar-inner
+        .container-fluid
+          %a.brand{:href=>"/"} Genehmigt
+          %p{:class=>"navbar-text pull-right"}
+            - if current_user.blank?
+              = link_to "Sign In", new_user_session_path
+              |
+              = link_to "Sign Up", new_user_registration_path
+            - else
+              = current_user.email
+              |
+              =link_to "Sign Out", destroy_user_session_path
     .container
-      .pull-right
-        - if current_user.blank?
-          = link_to "Sign In", new_user_session_path
-          |
-          = link_to "Sign Up", new_user_registration_path
-        - else
-          = current_user.email
-          |
-          =link_to "Sign Out", destroy_user_session_path
       = yield

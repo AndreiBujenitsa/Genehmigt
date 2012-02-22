@@ -4,18 +4,18 @@
     = form_errors(@process)
     - unless current_user
       .control-group
-        =f.label :owner, :class=>"control-label"
+        =f.label :owner, :class=>"control-label", :required=>true
         .controls
           = f.text_field :owner, :class=>"input-xxlarge", :type=>"email"
     -else
       =f.hidden_field :owner, :value=>current_user.email
       =f.hidden_field :user_id, :value=>current_user.id
     .control-group
-      =f.label :title, :class=>"control-label"
+      =f.label :title, :class=>"control-label", :required=>true
       .controls
         = f.text_field :title, :class=>"input-xxlarge"
     .control-group
-      =f.label :message, :class=>"control-label"
+      =f.label :message, :class=>"control-label", :required=>true
       .controls
         = f.text_area :message, :rows=>10, :class=>"input-xxlarge"
     .control-group

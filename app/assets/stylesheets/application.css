@@ -5,3 +5,7 @@
  *= require_self
  *= require_tree . 
 */
+body{
+  padding-bottom: 40px;
+  padding-top: 60px;
+}
