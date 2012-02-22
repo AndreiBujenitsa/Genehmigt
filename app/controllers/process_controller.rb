@@ -25,7 +25,9 @@ class ProcessController < ApplicationController
     @process = UserProcess.find(params[:id]).destroy
   end
   
-  
+  def upload
+    render :json => ['name' => 'test', 'size' => '20KB', 'id' => rand]
+  end
   
   protected
   def get_roles

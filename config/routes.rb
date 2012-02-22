@@ -10,7 +10,7 @@ Genehmigt::Application.routes.draw do
     resources :user_processes, :controller=>:process
     get 'process/:id'=> "process#show", :as=>"token_url"
   end
-
+  match 'upload' => 'process#upload'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
