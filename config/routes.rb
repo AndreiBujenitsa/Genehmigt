@@ -8,7 +8,7 @@ Genehmigt::Application.routes.draw do
     
     root :to => "process#new"
     resources :user_processes, :controller=>:process
-    get 'process/:id'=> "user_processes#show", :as=>"token_url"
+    get 'process/:id'=> "process#show", :as=>"token_url"
   end
 
   # The priority is based upon order of creation:
