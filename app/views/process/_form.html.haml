@@ -85,7 +85,7 @@
                   %select#role
                     %option{:value=>'0'}= t(:'create_process.choose_role')
                     - @roles.each do |role|
-                      %option{ :value => role[:id] }= role[:role]
+                      %option{ :value => role[:id] }= t("roles.#{role[:role]}")
     .form-actions
       %button{:type=>"submit", :class=>"btn btn-primary"} Create Process
         

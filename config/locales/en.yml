@@ -9,6 +9,9 @@ en:
     recipients_title: 'Recipients'
     description_title: 'Description'
     title_title: 'Title'
+  roles:
+    need_to_approve: Need to approve
+    need_to_be_informed: Need to be informed
        
   activerecord:
     models:
@@ -16,3 +19,4 @@ en:
       user_process:
         title: Title
         message: Message
+        owner: Owner's email

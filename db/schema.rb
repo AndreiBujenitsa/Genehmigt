@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120220132046) do
+ActiveRecord::Schema.define(:version => 20120222091450) do
 
   create_table "process_attachments", :force => true do |t|
     t.integer  "process_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120220132046) do
     t.integer  "process_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
   create_table "roles", :force => true do |t|
