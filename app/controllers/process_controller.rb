@@ -26,7 +26,7 @@ class ProcessController < ApplicationController
   end
   
   def upload
-    render :json => ['name' => 'test', 'size' => '20KB', 'id' => rand]
+    render :json => ['name' => 'test', 'size' => '20KB', 'id' => rand(1000)]
   end
   
   protected
