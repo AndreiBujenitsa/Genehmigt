@@ -1,0 +1,8 @@
+development:
+  site_name: localhost:8080
+  sender_email: genehmigt.test@gmail.com
+production:
+  site_name: genehmigt-de.herokuapp.com
+  sender_email: genehmigt.test@gmail.com
+test:
+

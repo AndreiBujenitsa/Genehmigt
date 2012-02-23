@@ -35,8 +35,4 @@ class UserProcess < ActiveRecord::Base
     hash
   end
   
-  protected
-  def send_members_invitation
-  
-  end
 end
