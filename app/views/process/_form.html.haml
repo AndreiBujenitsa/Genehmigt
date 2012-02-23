@@ -29,9 +29,7 @@
     .control-group
       =f.label :files, :class=>"control-label", :required=>true
       .controls
-        #zoneContainer
-          #dropZone
-          #notDropZone= 'put your files here'
+        #dropZone
         %span.btn.fileinput-button
           %span= 'Add file...'
           %input#inputFile{:type => 'file'}

@@ -26,7 +26,11 @@ class ProcessController < ApplicationController
   end
   
   def upload
-    render :json => ['name' => 'test', 'size' => '20KB', 'id' => rand(1000)]
+    attachment = ProcessAttachment.new
+    attachment.attachment = params["files"][0]
+    attachment.save
+    viewHelper = Object.new.extend(ActionView::Helpers::NumberHelper)
+    render :json => ['name' => params["files"][0].original_filename, 'size' => viewHelper.number_to_human_size(File.size(params["files"][0].tempfile)), 'id' => rand(1000)]
   end
   
   protected
