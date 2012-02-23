@@ -24,6 +24,9 @@ end
 
 gem 'jquery-rails'
 
+# Uploader gem
+gem 'carrierwave' 
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
