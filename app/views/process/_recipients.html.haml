@@ -6,3 +6,5 @@
       %th=ProcessMember.human_attribute_name(:state)
   %tbody
     =render :partial=>"recipient", :collection => @process.process_members
+    %tr
+      %td{:colspan=>3}
