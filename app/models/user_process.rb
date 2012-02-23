@@ -3,6 +3,7 @@ class UserProcess < ActiveRecord::Base
   validates_presence_of :title, :message, :owner, :recipients
   
   has_many :process_members, :dependent => :delete_all, :foreign_key => :process_id
+  has_many :process_attachments, :dependent => :delete_all, :foreign_key => :process_id
   
   after_create :add_members
   
