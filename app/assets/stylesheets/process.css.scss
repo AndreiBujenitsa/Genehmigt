@@ -1,3 +1,5 @@
-// Place all the styles related to the process controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$message_border_color: darken(#F5F5F5, 20%);
+.message_content{
+  border-top: 1px solid $message_border_color;
+  border-bottom: 1px solid $message_border_color;
+}

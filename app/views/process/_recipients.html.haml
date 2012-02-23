@@ -1,0 +1,8 @@
+%table.table
+  %thead
+    %tr
+      %th=ProcessMember.human_attribute_name(:email)
+      %th=ProcessMember.human_attribute_name(:role)
+      %th=ProcessMember.human_attribute_name(:state)
+  %tbody
+    =render :partial=>"recipient", :collection => @process.process_members

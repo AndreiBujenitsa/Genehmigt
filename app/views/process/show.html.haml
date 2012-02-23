@@ -1,0 +1,9 @@
+.row
+  .span8
+    .well
+      %h2=@process.title
+      .message_content
+        =simple_format(@process.message)
+      =render 'attachment'
+    =render 'recipients'
+  =render 'left_side'

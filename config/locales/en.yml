@@ -20,3 +20,7 @@ en:
         title: Title
         message: Message
         owner: Owner's email
+      process_member:
+        email: Recipient
+        role: Role
+        state: Status

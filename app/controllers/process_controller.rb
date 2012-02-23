@@ -18,7 +18,7 @@ class ProcessController < ApplicationController
   def show
     param = UserProcess.decrypt_token_url(params[:id])
     @process = UserProcess.find(param[:process_id])
-    raise @process.inspect
+    respond_with(@process)
   end
   
   def destroy
