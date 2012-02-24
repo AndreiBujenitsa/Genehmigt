@@ -36,7 +36,7 @@ $(document).ready(function(){
 
     $('#email').bind('keyup change', function(){
         var email_string = $('#email').val();
-        if(email_string.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i)){
+        if(email_string.match(/^[\w-\+\.]+@([\w-]+\.)+[\w-]{2,4}$/i)){
             $('#role').removeAttr('disabled');
         } else {
             $('#role').attr('disabled', '');
