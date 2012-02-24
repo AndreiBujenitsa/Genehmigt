@@ -45,6 +45,17 @@ class ProcessController < ApplicationController
     render :json => ['name' => params["files"][0].original_filename, 'size' => viewHelper.number_to_human_size(File.size(params["files"][0].tempfile)), 'id' => attachment.id]
   end
   
+  def mail_image
+    param = UserProcess.decrypt_token_url(params[:id])
+    user = ProcessMember.find_by_email_and_process_id(param[:mail], param[:process_id])
+    user.read_email unless user.blank?
+    response.headers['Cache-Control'] = "public, max-age=#{12.hours.to_i}"
+    response.headers['Content-Type'] = 'image/jpeg'
+    response.headers['Content-Disposition'] = 'inline'
+    image_url = "public/img.png"
+    render :text => open(image_url, "rb").read
+  end
+  
   protected
   def get_roles
     @roles = Role.all

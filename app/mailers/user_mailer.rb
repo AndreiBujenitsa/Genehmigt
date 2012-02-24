@@ -3,6 +3,7 @@ class UserMailer < ActionMailer::Base
   
   def invitation(member)
     @member = member
+    @process = member.user_process
     mail(:to => member.email,
          :subject => I18n.t(:mail_invitation_subject))
   end

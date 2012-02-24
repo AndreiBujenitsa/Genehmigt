@@ -9,6 +9,7 @@ Genehmigt::Application.routes.draw do
     root :to => "process#new"
     resources :user_processes, :controller=>:process
     get 'process/:id'=> "process#show", :as=>"token_url"
+    get 'process/:id/image.png'=>"process#mail_image"
   end
   match 'upload' => 'process#upload'
   # The priority is based upon order of creation:

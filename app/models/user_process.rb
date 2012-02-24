@@ -10,12 +10,12 @@ class UserProcess < ActiveRecord::Base
   def add_members
     uniq = true
     recipients.each_value do |val|
-      member = ProcessMember.new({:role_id=>val["role"], :email=>val["email"], :process_id=>id })
+      member = ProcessMember.new({:role_id=>val["role"], :email=>val["email"], :process_id=>id, :state=>"delivered" })
       member.save
       uniq = false if val["email"] == owner
     end
     unless uniq.blank? 
-      member = ProcessMember.new({:role_id=>2, :email=>owner, :process_id=>id })
+      member = ProcessMember.new({:role_id=>2, :email=>owner, :process_id=>id, :state=>"delivered" })
       member.save
     end
   end
