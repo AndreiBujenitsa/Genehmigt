@@ -1,9 +1,9 @@
-%h4= t(:'attachments')
 #attachments
   %table.table.table-striped#attachment_list
     %tbody
     - @process.process_attachments.each do |attachment|
       %tr
         %td
+          %i.icon-file
           %a{:href => attachment.attachment}= attachment.attachment.to_s.split('/').last
     
